@@ -8,8 +8,8 @@ const quotes = [
   { quote: 'I am your father', source: 'Darth Vader', cite: 'Star Wars Episode V: The Empire Strikes Back', year: 1980, tags: 'movie' },
   { quote: 'Don\'t be afraid to give up the good to go for the great.', source: 'John D. Rockefeller', tags: 'business'}
 ];
-
-const colors = ['black', 'yellow', 'orangered', 'coral', 'darkcyan', 'lightslategray'];
+// one dimensional array of strings - color names
+const colors = ['black', 'yellow', 'orangered', 'coral', 'darkcyan', 'lightslategray', 'pink'];
 
 //log quotes
 console.log(quotes);
