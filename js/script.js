@@ -1,13 +1,7 @@
-// 0. declared variables - probably shouldn't declare them here because they become 'global variables' and it's easier to mess things up, right? 
-var quotes;
-var randomNumber;
-var message;
-var randomQuote;
 
 
-
-//array of objects
-quotes = [
+//0. ------------------------------------------- array of objects
+const quotes = [
   { quote: 'E = mc2', source: "Albert Einstein", year: 1905, tags: 'science' },
   { quote: 'Women are made to be loved, not understood.', source: 'Oscar Wilde', tags: 'poetry'},
   { quote: 'I\'m going to make him an offer he can\'t refuse', source: 'The Godfather', cite: 'The Godfather', year: 1972, tags: 'movie' },
@@ -15,26 +9,36 @@ quotes = [
   { quote: 'Don\'t be afraid to give up the good to go for the great.', source: 'John D. Rockefeller', tags: 'business'}
 ];
 
+const colors = ['black', 'yellow', 'orangered', 'coral', 'darkcyan', 'lightslategray'];
+
 //log quotes
 console.log(quotes);
 
-// 1. ----------------------------------------- get random number function
+// 1. ----------------------------------------- get random quote function
 
-function getRandomNumber() {
+function getRandomQuote() {
   //get a number
-  randomNumber = Math.floor(Math.random() * quotes.length );
+  let randomNumber = Math.floor(Math.random() * quotes.length );
   // return the number assigned to the quotes array
   return quotes[randomNumber];
 
 }
 
+// Random color function 
+function getRandomColor() {
+  let randomColor = Math.floor(Math.random() * colors.length );
+  return colors[randomColor];
+}
+
 
 // 3. ----------------------------------------- print quote function
+
 function printQuote(){
- randomQuote = getRandomNumber();
+ let randomQuote = getRandomQuote();
+ let generatedColor = getRandomColor();
 
   // message structure
-  message = '';
+  let message = '';
   message += '<p class = "quote">' + randomQuote.quote + '</p>';
   message += '<p class = "source">' + randomQuote.source;
   //add cite property if any available
@@ -53,8 +57,11 @@ function printQuote(){
 
 
   //target output and amend html
-  var outPutDiv = document.getElementById('quote-box');
+  const outPutDiv = document.getElementById('quote-box');
   outPutDiv.innerHTML = message;
+
+  //target background and change it's color
+  document.body.style.backgroundColor = generatedColor;
 }
 
 //4. ----------------------------------------- set time interval
