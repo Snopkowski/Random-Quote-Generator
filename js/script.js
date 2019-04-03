@@ -1,30 +1,40 @@
-/******************************************
-Treehouse FSJS Techdegree:
-project 1 - A Random Quote Generator
-******************************************/
+
 
 // Study guide for this project - https://drive.google.com/file/d/1s5grutGuQFwJcQP8bFwEI69Q8FCkGdDk/view?usp=sharing
 
+// 0. declared variables
+var quotes;
+var randomNumber;
+var message;
 
-/*** 
-  Create the array of quote objects and name it `quotes`.
-  Add at least five quote objects to the `quotes` array.
-  Give each quote object a `quote` and `source` property.
-  Add the `citation` property to at least one object in the array.
-  Add the `year` property to at least one object in the array.
-  Use console.log() to log your array of quotes to the console.
-***/
+//array of objects
+quotes = [
+  { quote: 'E = mc2', source: "Albert Einstein", year: 1905 },
+  { quote: 'Women are made to be loved, not understood.', source: 'Oscar Wilde' },
+  { quote: 'I\'m going to make him an offer he can\'t refuse', source: 'The Godfather', cite: 'The Godfather', year: 1972 },
+  { quote: 'I am your father', source: 'Darth Vader', cite: 'Star Wars Episode V: The Empire Strikes Back', year: 1980 },
+  { quote: 'Don\'t be afraid to give up the good to go for the great.', source: 'John D. Rockefeller'}
+];
 
+//log quotes
+console.log(quotes);
 
+// 1. get random number function
 
+function getRandomNumber() {
+ return randomNumber = Math.floor(Math.random() * 5 );
+}
+// call the function
+getRandomNumber();
+console.log(randomNumber);
 
-/***
-  Create the `getRandomQuote` function to:
-   - Create a variable to store a random number 
-   - Cse the random number to `return` a random quote object from the `quotes` array.
-***/
-
-
+// 3. print quote function
+function printQuote() {
+  document.getElementById('quote-box').innerHTML = message;
+};
+printQuote();
+message = quotes[randomNumber];
+console.log(message);
 
 
 /***
@@ -50,7 +60,7 @@ project 1 - A Random Quote Generator
   comment.
 ***/
 
-document.getElementById('loadQuote').addEventListener("click", printQuote, false);
+//document.getElementById('loadQuote').addEventListener("click", printQuote, false);
 
 
 // Remember to delete the comments that came with this file, and replace them with your own code comments.
