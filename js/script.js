@@ -1,11 +1,9 @@
-
-
-// Study guide for this project - https://drive.google.com/file/d/1s5grutGuQFwJcQP8bFwEI69Q8FCkGdDk/view?usp=sharing
-
 // 0. declared variables
 var quotes;
 var randomNumber;
 var message;
+
+
 
 //array of objects
 quotes = [
@@ -22,45 +20,39 @@ console.log(quotes);
 // 1. get random number function
 
 function getRandomNumber() {
- return randomNumber = Math.floor(Math.random() * 5 );
+  //get a number
+  randomNumber = Math.floor(Math.random() * quotes.length );
+  // return the number assigned to the quotes array
+  return quotes[randomNumber];
+
 }
-// call the function
-getRandomNumber();
-console.log(randomNumber);
+
 
 // 3. print quote function
-function printQuote() {
-  document.getElementById('quote-box').innerHTML = message;
-};
-printQuote();
-message = quotes[randomNumber];
-console.log(message);
+function printQuote(){
+  var randomQuote = getRandomNumber();
+
+  // message structure
+  message = '';
+  message += '<p class = "quote">' + randomQuote.quote + '</p>';
+  message += '<p class = "source">' + randomQuote.source;
+  //add cite property if any available
+  if (randomQuote.cite){
+    message += '<span class="citation">' + randomQuote.cite + '</span>';
+  }
+  // add year property if available 
+  if (randomQuote.year){
+    message += '<span class="year">' + randomQuote.year + '</span>';
+  }
+  //add closing tag
+  message += '</p>';
 
 
-/***
-  Create the `printQuote` function to: 
-   - Call the `getRandomQuote` function and assign it to a variable.
-   - Create a variable for the HTML string and set it equal to an empty string.
-   - Use the HTML template in the instructions or the markup in the index.html file, AND 
-     the random quote vairable to build your HTML string.
-   - Add the quote and source section to the HTML string.
-   - Use an if statement to check for the citation property before adding it to the HTML string.
-   - Use an if statement to check for the year property before adding it to the HTML string.
-   - Don't forget to close that final `p` tag.
-   - Set the `innerHTML` of the `quote-box` div to the HTML string. 
-***/
+  //target output and amend html
+  var outPutDiv = document.getElementById('quote-box');
+  outPutDiv.innerHTML = message;
+}
 
+//Event listener
 
-
-
-/***
-  When the "Show another quote" button is clicked, the event listener 
-  below will be triggered, and it will call, or "invoke", the `printQuote` 
-  function. So do not make any changes to the line of code below this 
-  comment.
-***/
-
-//document.getElementById('loadQuote').addEventListener("click", printQuote, false);
-
-
-// Remember to delete the comments that came with this file, and replace them with your own code comments.
+document.getElementById('loadQuote').addEventListener("click", printQuote, false);
