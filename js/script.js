@@ -1,23 +1,24 @@
-// 0. declared variables
+// 0. declared variables - probably shouldn't declare them here because they become 'global variables' and it's easier to mess things up, right? 
 var quotes;
 var randomNumber;
 var message;
+var randomQuote;
 
 
 
 //array of objects
 quotes = [
-  { quote: 'E = mc2', source: "Albert Einstein", year: 1905 },
-  { quote: 'Women are made to be loved, not understood.', source: 'Oscar Wilde' },
-  { quote: 'I\'m going to make him an offer he can\'t refuse', source: 'The Godfather', cite: 'The Godfather', year: 1972 },
-  { quote: 'I am your father', source: 'Darth Vader', cite: 'Star Wars Episode V: The Empire Strikes Back', year: 1980 },
-  { quote: 'Don\'t be afraid to give up the good to go for the great.', source: 'John D. Rockefeller'}
+  { quote: 'E = mc2', source: "Albert Einstein", year: 1905, tags: 'science' },
+  { quote: 'Women are made to be loved, not understood.', source: 'Oscar Wilde', tags: 'poetry'},
+  { quote: 'I\'m going to make him an offer he can\'t refuse', source: 'The Godfather', cite: 'The Godfather', year: 1972, tags: 'movie' },
+  { quote: 'I am your father', source: 'Darth Vader', cite: 'Star Wars Episode V: The Empire Strikes Back', year: 1980, tags: 'movie' },
+  { quote: 'Don\'t be afraid to give up the good to go for the great.', source: 'John D. Rockefeller', tags: 'business'}
 ];
 
 //log quotes
 console.log(quotes);
 
-// 1. get random number function
+// 1. ----------------------------------------- get random number function
 
 function getRandomNumber() {
   //get a number
@@ -28,9 +29,9 @@ function getRandomNumber() {
 }
 
 
-// 3. print quote function
+// 3. ----------------------------------------- print quote function
 function printQuote(){
-  var randomQuote = getRandomNumber();
+ randomQuote = getRandomNumber();
 
   // message structure
   message = '';
@@ -44,6 +45,9 @@ function printQuote(){
   if (randomQuote.year){
     message += '<span class="year">' + randomQuote.year + '</span>';
   }
+  if (randomQuote.tags) {
+    message += ' -' + randomQuote.tags;
+  }
   //add closing tag
   message += '</p>';
 
@@ -53,6 +57,8 @@ function printQuote(){
   outPutDiv.innerHTML = message;
 }
 
-//Event listener
+//4. ----------------------------------------- set time interval
+setInterval(printQuote, 10000);
 
+//5. -----------------------------------------Event listener
 document.getElementById('loadQuote').addEventListener("click", printQuote, false);
