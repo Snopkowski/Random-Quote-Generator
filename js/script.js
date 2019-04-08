@@ -1,5 +1,3 @@
-
-
 //0. ------------------------------------------- array of objects
 const quotes = [
   { quote: 'E = mc2', source: "Albert Einstein", year: 1905, tags: 'science' },
